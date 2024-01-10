@@ -1,4 +1,5 @@
 const axios = require('axios');
+const express = require('express')
 const username = process.env['username']
 const password = process.env['password']
 const authenticate = async () => {
@@ -57,5 +58,9 @@ const autoClaim = async () => {
         }
     }
 };
-
+const app = express()
+app.get('/', (req, res) => {
+  res.send('ACR activated')
+})
+app.listen(3000, () => {console.log('server up')})
 autoClaim();
